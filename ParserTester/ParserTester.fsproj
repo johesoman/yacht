@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="src/External.fs" />
+    <Compile Include="src/Extensions.fs" />
+    <Compile Include="src/PPrint.fs" />
+    <Compile Include="src/RunProcess.fs" />
+    <Compile Include="src/Generator/Types.fs" />
+    <Compile Include="src/Generator/PrettyPrint.fs" />
+    <Compile Include="src/Generator/Generate.fs" />
+    <Compile Include="src/Error.fs" />
+    <Compile Include="src/Application.fs" />
+    <Compile Include="src/Program.fs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="QUT.ShiftReduceParser">
+      <HintPath>..\Parser\QUT.ShiftReduceParser.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Parser\Parser.csproj" />
+  </ItemGroup>
+  <Import Project=".paket\Paket.Restore.targets" />
+</Project>

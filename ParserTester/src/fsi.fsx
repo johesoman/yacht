@@ -1,0 +1,16 @@
+// external
+#r @"../Parser/bin/Debug/netcoreapp2.1/QUT.ShiftReduceParser.dll"
+#r @"../Parser/bin/Debug/netcoreapp2.1/Parser.dll"
+#load "External.fs"
+// lib
+#load "Extensions.fs"
+#load "PPrint.fs"
+#load "RunProcess.fs"
+// generator
+#load "Generator/Types.fs"
+#load "Generator/PrettyPrint.fs"
+#load "Generator/Generate.fs"
+// application
+#load "Error.fs"
+#load "Application.fs"
+#load "Program.fs"

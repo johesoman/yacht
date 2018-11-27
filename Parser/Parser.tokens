@@ -1,0 +1,13 @@
+// Symbolic tokens for grammar file "Parser.y - 11/12/2016 12:14:54 PM"
+	Tokens.error /* 127 */
+	Tokens.EOF /* 128 */
+	Tokens.ID /* 129 */
+	Tokens.INT /* 130 */
+	Tokens.BOOL /* 131 */
+	Tokens.INTT /* 132 */
+	Tokens.BOOLT /* 133 */
+	Tokens.IF /* 134 */
+	Tokens.ELSE /* 135 */
+	Tokens.WHILE /* 136 */
+	Tokens.RETURN /* 137 */
+// End symbolic tokens for parser

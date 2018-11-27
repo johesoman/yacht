@@ -1,0 +1,45 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <EnableDefaultCompileItems>False</EnableDefaultCompileItems>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="System"/>
+    <Reference Include="QUT.ShiftReduceParser">
+      <HintPath>QUT.ShiftReduceParser.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+
+    <Compile Include="Program.cs" />
+    <Compile Include="Generated\Lexer.cs">
+      <Link>Lexer.cs</Link>
+    </Compile>
+
+    <Compile Include="Generated\Parser.cs">
+      <Link>Parser.cs</Link>
+    </Compile>
+
+    <Compile Include="Pretty.cs" />
+    <Compile Include="PrettySyntax.cs" />
+    <Compile Include="StringGenerator.cs" />
+    <Compile Include="Utility.cs" />
+    <Compile Include="AbstractSyntax.cs" />
+    <Compile Include="AbstractSyntaxGenerator.cs" />
+    <Compile Include="Generators.cs" />
+    <Compile Include="AbstractSyntaxVisitor.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Lexer.lex" />
+    <None Include="Parser.y" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Generated/" />
+  </ItemGroup>
+
+</Project>

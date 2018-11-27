@@ -1,0 +1,16 @@
+# Interpreter
+Interpreter/[Bb]in/*
+Interpreter/[Oo]bj/*
+
+# Parser
+Parser/[Bb]in/*
+Parser/[Oo]bj/*
+
+# ParserTester
+ParserTester/.paket/paket.exe
+ParserTester/paket-files/
+ParserTester/[Bb]in/*
+ParserTester/[Oo]bj/*
+
+# general
+.DS_Store
