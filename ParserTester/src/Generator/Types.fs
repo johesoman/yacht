@@ -4,8 +4,8 @@ namespace Generator
 
 module Types =
   type Type =
-    | Int  of int
-    | Bool of bool
+    | Int
+    | Bool
 
 
 
@@ -25,14 +25,15 @@ module Types =
 
 
   type Bop =
+    | Asn
     | Or
     | And
     | Eq
-    | Neq
+    | Ne
     | Lt
-    | Leq
+    | Le
     | Gt
-    | Geq
+    | Ge
     | Add
     | Sub
     | Mul
@@ -45,7 +46,6 @@ module Types =
     | Bool of bool
     | Var  of Name
     | Uop  of Uop * Expr
-    | Asn  of Name * Expr
     | Call of Name * Expr []
     | Bop  of Expr * Bop * Expr
 
