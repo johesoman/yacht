@@ -27,6 +27,24 @@ module Pair =
 
 
 
+module List =
+  let tryUnsnoc =
+    let rec go =
+      function
+      | []  -> failwith "Error @ List.tryUnsnoc"
+      | [x] -> [], x
+      | x :: xs ->
+          match go xs with
+          | ys, y -> x :: ys, y
+
+    function
+    | [] -> None
+    | xs -> Some (go xs)
+
+
+
+
+
 module String =
   let concatNonNull sep ss =
     Seq.filter (String.IsNullOrEmpty >> not) ss

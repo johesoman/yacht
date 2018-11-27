@@ -9,8 +9,7 @@ module Types =
 
 
 
-  type Name =
-    | Name of string
+  type Name = string
 
 
 
@@ -46,7 +45,7 @@ module Types =
     | Bool of bool
     | Var  of Name
     | Uop  of Uop * Expr
-    | Call of Name * Expr []
+    | Call of Name * Expr list
     | Bop  of Expr * Bop * Expr
 
 
@@ -56,16 +55,16 @@ module Types =
     | Expr    of Expr
     | FuncRet of Expr
     | Decl    of Type * Name
-    | While   of Expr * Stmt []
-    | If      of Expr * Stmt [] * Stmt []
+    | While   of Expr * Stmt list
+    | If      of Expr * Stmt list * Stmt list
 
 
 
   type Def =
-    | Func of Type * Name * Param [] * Stmt []
-    | Proc of Type * Name * Param [] * Stmt []
+    | Func of Type * Name * Param list * Stmt list
+    | Proc of Type * Name * Param list * Stmt list
 
 
 
   type Program =
-    | Program of Def []
+    | Program of Def list
