@@ -19,10 +19,14 @@ module Types =
 
 
 
+  type Uop =
+    | Not
+
+
+
   type Bop =
     | Or
     | And
-    | Not
     | Eq
     | Neq
     | Lt
@@ -36,21 +40,14 @@ module Types =
 
 
 
-  type Uop =
-    | Not
-    | Add
-    | Sub
-
-
-
   type Expr =
     | Int  of int
     | Bool of bool
     | Var  of Name
-    | Expr of Expr
     | Uop  of Uop * Expr
+    | Asn  of Name * Expr
     | Call of Name * Expr []
-    | Bop  of Bop * Expr * Expr
+    | Bop  of Expr * Bop * Expr
 
 
 
