@@ -78,10 +78,10 @@ module PrettyPrint =
 
       parensIf (p2 < p) <|
       match e with
-      | Var (s)    -> txt s
-      | Bool false -> txt "false"
+      | Var  n     -> txt n
       | Bool true  -> txt "true"
-      | Int x      -> txt (sprintf "%d" x)
+      | Bool false -> txt "false"
+      | Int  x     -> txt (sprintf "%d" x)
 
       | Uop (op, e2) ->
           cat [ Uop.pretty op
@@ -93,8 +93,8 @@ module PrettyPrint =
               ; pwp p2 e3
               ]
 
-      | Call (s, es) ->
-          cat [ txt s
+      | Call (n, es) ->
+          cat [ txt n
               ; chr '('
               ; sepList (chr ',') (List.map (pwp -1) es)
               ; chr ')'
@@ -112,9 +112,254 @@ module PrettyPrint =
 
 
 
+  module Stmt =
+    let rec prettyManyNested =
+      function
+      | [] -> empty
+      | ss ->
+          let f =
+            function
+            | If _    as s -> pretty s
+            | Block _ as s -> pretty s
+            | While _ as s -> pretty s
+            | s -> pretty s :: [chr ';'] |> cat
+
+          List.map f ss
+          |> lines
+          |> nest 2
+
+
+
+    and pretty =
+      function
+      | Expr e -> Expr.pretty e
+
+      | Decl (t, n) ->
+          sep [ Type.pretty t
+              ; txt n
+              ]
+
+      | FuncRet e ->
+          sep [ txt "return"
+              ; Expr.pretty e
+              ]
+
+      | ProcRet -> txt "return"
+
+      | Block [] -> txt "{}"
+      | Block ss ->
+          lines [ chr '{'
+                ; prettyManyNested ss
+                ; chr '}'
+                ]
+
+      | While (e, ss) ->
+          let cond = sep [txt "while"; parens (Expr.pretty e)]
+
+          match ss with
+          | [] -> sep [cond; txt "{}"]
+          | ss ->
+              lines [ sep [cond; chr '{']
+                    ; prettyManyNested ss
+                    ; chr '}'
+                    ]
+
+      | If (e, ss, ss2) ->
+          let cond = sep [txt "if"; parens (Expr.pretty e)]
+
+          match ss, ss2 with
+          | [], [] -> sep [cond; txt "{}"]
+          | ss, [] ->
+              lines [ sep [cond; chr '{']
+                    ; prettyManyNested ss
+                    ; chr '}'
+                    ]
+
+          | ss, ss2 ->
+              lines [ sep [cond; chr '{']
+                    ; prettyManyNested ss
+                    ; txt "} else {"
+                    ; prettyManyNested ss2
+                    ; chr '}'
+                    ]
+
+
+
+    let prettyString =
+      pretty
+      >> PPrint.render
+
+
+  module Param =
+    let pretty (Param (t, n)) =
+      sep [Type.pretty t; txt n]
+
+
+
+    let prettyString =
+      pretty
+      >> PPrint.render
+
+
+
+  module Def =
+    let prettyNameAndParams n ps =
+      cat [ txt n
+          ; chr '('
+          ; List.map Param.pretty ps |>  sepList (chr ',')
+          ; chr ')'
+          ]
+
+    let prettySigWith ss signature =
+          match ss with
+          | [] -> sep [signature; txt "{}"]
+          | ss ->
+              lines [ sep [signature; chr '{']
+                    ; Stmt.prettyManyNested ss
+                    ; chr '}'
+                    ]
+
+
+
+    let pretty =
+      function
+      | Proc (n, ps, ss) ->
+          sep [txt "void"; prettyNameAndParams n ps ]
+          |> prettySigWith ss
+
+      | Func (t, n, ps, ss) ->
+          sep [Type.pretty t; prettyNameAndParams n ps ]
+          |> prettySigWith ss
+
+
+
+    let prettyString =
+      pretty
+      >> PPrint.render
+
+
+
+  module Program =
+    let pretty (Program ds) =
+      List.map Def.pretty ds
+      |> sepLines (PPrint.empty)
+
+
+
+    let prettyString =
+      pretty
+      >> PPrint.render
+
+
+
 // ++++++++
 // + test +
 // ++++++++
+
+
+
+  let strip = String.removeBy Char.IsWhiteSpace
+
+
+
+  let testDefAndProgram =
+    let pr  = Def.prettyString
+    let prs = pr >> strip
+
+    let ps = [Param (Type.Int, "x"); Param (Type.Int, "y")]
+    let ss = [ Decl (Type.Int, "z")
+             ; Expr (Bop (Var "z", Asn, Bop (Var "x", Add, Var "y")))
+             ]
+
+    let d  = Func (Type.Int, "f", ps, ss @ [FuncRet (Var "z")])
+    let d2 = Proc ("g", ps, ss @ [Expr (Call ("print", [Var "z"])); ProcRet])
+
+    let defs =
+      testList "defs"
+        [ test "1" {Expect.equal (prs d )
+                      "intf(intx,inty){intz;z=x+y;returnz;}" ""}
+        ; test "2" {Expect.equal (prs d2)
+                      "voidg(intx,inty){intz;z=x+y;print(z);return;}" ""}
+        ]
+
+    let p = Program.prettyString (Program [d; d2])
+
+    printfn "%s" p
+
+    let programs =
+      testList "programs"
+        [ test "1" {Expect.equal (strip p )
+                      "intf(intx,inty){intz;z=x+y;returnz;}\
+                      voidg(intx,inty){intz;z=x+y;print(z);return;}" ""}
+        ]
+
+    testList "all"
+      [ defs
+      ; programs
+      ]
+
+
+
+  let testStmt =
+    let pr  = Stmt.prettyString
+    let prs = pr >> strip
+
+    let b  = pr <| Block [Expr (Int 1); Block [Block []]; Expr (Int 2)]
+    let b2 = pr <| Block [Block [Block [Block [Block []]]]]
+    let b3 = pr <| Block [Block []; (Expr (Var "x")); Block []; ProcRet]
+    let b4 = pr <| Block [Block []; Block []; Block []; FuncRet (Int 1)]
+
+    let blocks =
+      testList "blocks"
+        [ test "1" {Expect.equal (strip b ) "{1;{{}}2;}" ""}
+        ; test "2" {Expect.equal (strip b2) "{{{{{}}}}}" ""}
+        ; test "3" {Expect.equal (strip b3) "{{}x;{}return;}" ""}
+        ; test "4" {Expect.equal (strip b4) "{{}{}{}return1;}" ""}
+        ]
+
+    let fi  = pr <| If (Int 1, [Block []], [Block []])
+    let fi2 = pr <| If (Int 1, [Block []], [])
+    let fi3 = pr <| If (Int 1, [], [Block []])
+    let fi4 = pr <| If (Int 1, [], [])
+    let fi5 = pr <| If (Int 1, [Expr (Int 1); Expr (Int 2)], [])
+    let fi6 = pr <| If (Int 1, [], [Expr (Int 1); Expr (Int 2)])
+    let fi7 = pr <| If (Int 1, [Block [Expr (Int 1); Expr (Int 2)]], [])
+
+    let ifs =
+      testList "ifs"
+        [ test "1" {Expect.equal (strip fi ) "if(1){{}}else{{}}" ""}
+        ; test "2" {Expect.equal (strip fi2) "if(1){{}}" ""}
+        ; test "3" {Expect.equal (strip fi3) "if(1){}else{{}}" ""}
+        ; test "4" {Expect.equal (strip fi4) "if(1){}" ""}
+        ; test "5" {Expect.equal (strip fi5) "if(1){1;2;}" ""}
+        ; test "6" {Expect.equal (strip fi6) "if(1){}else{1;2;}" ""}
+        ; test "7" {Expect.equal (strip fi7) "if(1){{1;2;}}" ""}
+        ]
+
+    let wh  = pr <| While (Int 1, [])
+    let wh2 = pr <| While (Int 1, [Block [Block []]])
+    let wh3 = pr <| While (Int 1, [Expr (Int 1); Block []; ProcRet])
+    let wh4 = pr <| While (Int 1, [If (Int 1, [ProcRet], [Block [ProcRet]])])
+
+    let whiles =
+      testList "whiles"
+        [ test "1" {Expect.equal (strip wh ) "while(1){}" ""}
+        ; test "2" {Expect.equal (strip wh2) "while(1){{{}}}" ""}
+        ; test "3" {Expect.equal (strip wh3) "while(1){1;{}return;}" ""}
+        ; test "4" {Expect.equal (strip wh4)
+                      "while(1){if(1){return;}else{{return;}}}" ""}
+        ]
+
+    let other =
+      testList "other"
+        [ test "1" {Expect.equal (pr ProcRet) "return" ""}
+        ; test "2" {Expect.equal (pr (FuncRet (Int 1))) "return 1" ""}
+        ; test "3" {Expect.equal (pr (Expr (Int 1))) "1" ""}
+        ; test "4" {Expect.equal (pr (Decl (Type.Int, "x"))) "int x" ""}
+        ; test "5" {Expect.equal (pr (Decl (Type.Bool, "y"))) "bool y" ""}
+        ]
+
+    testList "stmt" [blocks; ifs; whiles; other]
 
 
 
@@ -173,9 +418,6 @@ module PrettyPrint =
                     }
         ]
 
-
-
-
     let other =
       testList "other"
         [ test "1" {
@@ -196,8 +438,9 @@ module PrettyPrint =
 
   let allTests =
     testList "pretty"
-      [
-        testExpr
+      [ testExpr
+      ; testStmt
+      ; testDefAndProgram
       ]
 
 

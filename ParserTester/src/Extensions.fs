@@ -28,6 +28,32 @@ module Pair =
 
 
 module List =
+  let intersperse x xs =
+    let rec go =
+      function
+      | [] -> []
+      | [y] -> [y]
+      | y :: ys -> y :: x :: go ys
+
+    go xs
+
+
+
+  let intercalate xs ys =
+    let rec go =
+      function
+      | [] -> []
+      | [z] -> [z]
+      | z :: zs -> z :: xs @ go zs
+
+    go ys
+
+
+
+  let snoc x xs = xs @ [x]
+
+
+
   let tryUnsnoc =
     let rec go =
       function
@@ -40,59 +66,6 @@ module List =
     function
     | [] -> None
     | xs -> Some (go xs)
-
-
-
-
-
-module String =
-  let concatNonNull sep ss =
-    Seq.filter (String.IsNullOrEmpty >> not) ss
-    |> String.concat sep
-
-
-
-  let splitOnMany cs (s : string) = s.Split cs
-
-
-
-  let splitOn c s = splitOnMany [|c|] s
-
-
-
-  let toLines (s : string) = s.Split '\n'
-
-
-
-  let fromLines ss = String.concat "\n" ss
-
-
-
-  let ofCharArray (xs : char []) = new string(xs)
-
-
-
-  let toCharArray (s: string) = s.ToCharArray()
-
-
-
-  let takeNOrLess n s =
-    match n, s with
-    | n, _  when n < 1 -> ""
-    | _, "" -> ""
-    | _, _ ->
-        if String.length s < n
-          then ""
-          else s.[.. n - 1]
-
-
-
-
-  let endsWith s s2 =
-    match String.length s, String.length s2 with
-    | _, 0 -> true
-    | n, m when m < n -> false
-    | n, m -> s = s2.[m - n ..]
 
 
 
@@ -180,6 +153,18 @@ module Map =
 
 
 module Seq =
+  let group (xs : _ []) = Seq.groupBy id xs
+
+
+
+  let removeBy f = Seq.filter (f >> not)
+
+
+
+  let removeAll x xs = Seq.filter ((<>) x) xs
+
+
+
   // returns the first duplicate
   let tryFindDuplicate (xs : _ seq) =
       let s = System.Collections.Generic.HashSet()
@@ -439,5 +424,79 @@ module Array =
 
 
   let intercalate sep = intersperse sep >> Array.concat
+
+
+
+module String =
+  let concatNonNull sep ss =
+    Seq.filter (String.IsNullOrEmpty >> not) ss
+    |> String.concat sep
+
+
+
+  let splitOnMany cs (s : string) = s.Split cs
+
+
+
+  let splitOn c s = splitOnMany [|c|] s
+
+
+
+  let toLines (s : string) = s.Split '\n'
+
+
+
+  let fromLines ss = String.concat "\n" ss
+
+
+
+  let ofCharArray (xs : char []) = new string(xs)
+
+
+
+  let toCharArray (s: string) = s.ToCharArray()
+
+
+
+  let hofBase f =
+    toCharArray
+    >> f
+    >> ofCharArray
+
+
+
+  let removeAll c = hofBase (Array.removeAll c)
+
+
+
+  let removeBy f = hofBase (Array.removeBy f)
+
+
+
+  let filter f = hofBase (Array.filter f)
+
+
+
+  let map f = hofBase (Array.map f)
+
+
+
+  let takeNOrLess n s =
+    match n, s with
+    | n, _  when n < 1 -> ""
+    | _, "" -> ""
+    | _, _ ->
+        if String.length s < n
+          then ""
+          else s.[.. n - 1]
+
+
+
+
+  let endsWith s s2 =
+    match String.length s, String.length s2 with
+    | _, 0 -> true
+    | n, m when m < n -> false
+    | n, m -> s = s2.[m - n ..]
 
 

@@ -54,6 +54,7 @@ module Types =
     | ProcRet
     | Expr    of Expr
     | FuncRet of Expr
+    | Block   of Stmt list
     | Decl    of Type * Name
     | While   of Expr * Stmt list
     | If      of Expr * Stmt list * Stmt list
@@ -61,8 +62,8 @@ module Types =
 
 
   type Def =
+    | Proc of Name * Param list * Stmt list
     | Func of Type * Name * Param list * Stmt list
-    | Proc of Type * Name * Param list * Stmt list
 
 
 
