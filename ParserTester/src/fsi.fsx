@@ -12,9 +12,11 @@
 #load "Extensions.fs"
 #load "PPrint.fs"
 #load "RunProcess.fs"
+// language
+#load "Language/LTypes.fs"
+#load "Language/LPrettyPrint.fs"
 // generator
-#load "Generator/Types.fs"
-#load "Generator/PrettyPrint.fs"
+#load "Generator/PrettyPrintBadly.fs"
 #load "Generator/Generate.fs"
 // application
 #load "Error.fs"

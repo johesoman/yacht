@@ -9,8 +9,9 @@
     <Compile Include="src/Extensions.fs" />
     <Compile Include="src/PPrint.fs" />
     <Compile Include="src/RunProcess.fs" />
-    <Compile Include="src/Generator/Types.fs" />
-    <Compile Include="src/Generator/PrettyPrint.fs" />
+    <Compile Include="src/Language/LTypes.fs" />
+    <Compile Include="src/Language/LPrettyPrint.fs" />
+    <Compile Include="src/Generator/PrettyPrintBadly.fs" />
     <Compile Include="src/Generator/Generate.fs" />
     <Compile Include="src/Error.fs" />
     <Compile Include="src/Application.fs" />
