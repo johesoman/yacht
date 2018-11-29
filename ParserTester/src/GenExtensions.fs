@@ -9,7 +9,7 @@ open FsCheck
 
 module Gen =
   let sampleOne g =
-    Gen.sample 0 1 g
+    Gen.sample 1 1 g
     |> List.head
 
 
