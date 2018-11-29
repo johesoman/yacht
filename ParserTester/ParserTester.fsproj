@@ -7,6 +7,7 @@
   <ItemGroup>
     <Compile Include="src/External.fs" />
     <Compile Include="src/Extensions.fs" />
+    <Compile Include="src/GenExtensions.fs" />
     <Compile Include="src/PPrint.fs" />
     <Compile Include="src/RunProcess.fs" />
     <Compile Include="src/Language/LTypes.fs" />

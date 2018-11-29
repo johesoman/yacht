@@ -5,41 +5,113 @@ module Generate =
 
 
 
+  open System
   open FsCheck
+  open GenExtensions
   open Language.Types
+  open Language.PrettyPrint
 
 
 
-  module Gen =
-    let alphaChar =
-      ['a' .. 'z'] @ ['A' .. 'Z']
-      |> Gen.elements
-
-
-
-    let numChar =
-      ['0' .. '9']
-      |> Gen.elements
-
-
-
-    let alphaNumChar =
-      Gen.frequency
-        [ 2, alphaChar
-        ; 1, numChar
+  module Uop =
+    let generate =
+      Gen.elements
+        [ Not
         ]
 
 
 
-    let alphaNumString lo hi = gen {
-        let! n  = Gen.choose (lo, hi)
-        let! c  = alphaChar
-        let! cs = Gen.arrayOfLength n alphaNumChar
-        return new string(Array.append [|c|] cs)
+  module Bop =
+    let generate =
+      Gen.elements
+        [ Asn
+        ; Or
+        ; And
+        ; Eq
+        ; Ne
+        ; Lt
+        ; Le
+        ; Gt
+        ; Ge
+        ; Add
+        ; Sub
+        ; Mul
+        ; Div
+        ]
+
+
+
+  module Expr =
+    let integer _ = Gen.map Int Gen.integer
+
+
+
+    let boolean _ = Gen.map Bool Gen.boolean
+
+
+
+    let var _ =
+      Gen.identifier (1, 5)
+      |> Gen.map Var
+
+
+
+    let leafs =
+      Gen.oneof
+        [ integer ()
+        ; boolean ()
+        ; var ()
+        ]
+
+
+
+    let rec uops n =
+      if n <= 0 then leafs
+      else gen {
+        let! e  = expr (n - 1)
+        let! op = Uop.generate
+        return Uop (op, e)
       }
 
 
 
+    and bops n =
+      if n <= 0 then leafs
+      else gen {
+        let! e  = expr (n / 2)
+        let! op = Bop.generate
+        let! e2 = expr (n / 2)
+        return Bop (e, op, e2)
+        }
 
 
 
+    and call n = gen {
+      let! m  = Gen.choose (1, 5)
+      let! es = Gen.listOfLength m (expr (n / m))
+      let! s  = Gen.identifier (1, 5)
+      return Call (s, es)
+      }
+
+
+
+    and expr n =
+      Gen.oneof
+        [ var n
+        ; uops n
+        ; bops n
+        ; call n
+        ; integer n
+        ; boolean n
+        ]
+
+
+
+    let generate n = expr n
+
+
+
+  let testExpr g =
+    Gen.sampleOne g
+    |> Expr.prettyString
+    |> printfn "%s"

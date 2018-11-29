@@ -10,6 +10,7 @@
 #load "External.fs"
 // lib
 #load "Extensions.fs"
+#load "GenExtensions.fs"
 #load "PPrint.fs"
 #load "RunProcess.fs"
 // language
