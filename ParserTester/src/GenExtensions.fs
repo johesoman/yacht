@@ -46,13 +46,3 @@ module Gen =
     let! cs = alphaNumString lenLo (lenHi - 1)
     return string c + cs
     }
-
-
-
-  let integer =
-    (Int32.MinValue, Int32.MaxValue)
-    |> Gen.choose
-
-
-
-  let boolean = Gen.elements [false; true]

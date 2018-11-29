@@ -42,15 +42,19 @@ module Generate =
 
 
   module Expr =
-    let integer _ = Gen.map Int Gen.integer
+    let integer =
+      Gen.choose (-100, 100)
+      |> Gen.map Int
 
 
 
-    let boolean _ = Gen.map Bool Gen.boolean
+    let boolean =
+      Gen.elements [false; true]
+      |> Gen.map Bool
 
 
 
-    let var _ =
+    let var =
       Gen.identifier (1, 5)
       |> Gen.map Var
 
@@ -58,9 +62,9 @@ module Generate =
 
     let leafs =
       Gen.oneof
-        [ integer ()
-        ; boolean ()
-        ; var ()
+        [ integer
+        ; boolean
+        ; var
         ]
 
 
@@ -90,7 +94,6 @@ module Generate =
       if n <= 0 then leafs
       else gen {
         let! m  = Gen.choose (1, 5)
-        let  n2 = max 1 (n / m)
         let! es = Gen.listOfLength m (expr (n / m))
         let! s  = Gen.identifier (1, 5)
         return Call (s, es)
@@ -100,17 +103,23 @@ module Generate =
 
     and expr n =
       Gen.oneof
-        [ var n
+        [ var
         ; uops n
         ; bops n
         ; call n
-        ; integer n
-        ; boolean n
+        ; integer
+        ; boolean
         ]
 
 
 
     let generate n = expr n
+
+
+
+// +++++++++++
+// + testing +
+// +++++++++++
 
 
 
