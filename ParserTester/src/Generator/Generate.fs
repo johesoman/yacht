@@ -43,6 +43,9 @@ module Generate =
 
   module Expr =
     let integer =
+      // beware:
+      //   Gen.choose (Int32.MinValue, Int32.MaxValue)
+      //   will throw DivideByZeroException
       Gen.choose (-100, 100)
       |> Gen.map Int
 
