@@ -86,12 +86,15 @@ module Generate =
 
 
 
-    and call n = gen {
-      let! m  = Gen.choose (1, 5)
-      let! es = Gen.listOfLength m (expr (n / m))
-      let! s  = Gen.identifier (1, 5)
-      return Call (s, es)
-      }
+    and call n =
+      if n <= 0 then leafs
+      else gen {
+        let! m  = Gen.choose (1, 5)
+        let  n2 = max 1 (n / m)
+        let! es = Gen.listOfLength m (expr (n / m))
+        let! s  = Gen.identifier (1, 5)
+        return Call (s, es)
+        }
 
 
 
