@@ -21,6 +21,18 @@ module PrettyPrint =
 
 
 
+    let prettyString =
+      pretty
+      >> PPrint.render
+
+
+
+    let prettyPrint =
+      prettyString
+      >> printfn "%s"
+
+
+
   module Bop =
     let pretty =
       function
@@ -40,11 +52,35 @@ module PrettyPrint =
 
 
 
+    let prettyString =
+      pretty
+      >> PPrint.render
+
+
+
+    let prettyPrint =
+      prettyString
+      >> printfn "%s"
+
+
+
   module Type =
     let rec pretty =
       function
       | Type.Int  -> txt "int"
       | Type.Bool -> txt "bool"
+
+
+
+    let prettyString =
+      pretty
+      >> PPrint.render
+
+
+
+    let prettyPrint =
+      prettyString
+      >> printfn "%s"
 
 
 
@@ -109,6 +145,12 @@ module PrettyPrint =
     let prettyString =
       pretty
       >> PPrint.render
+
+
+
+    let prettyPrint =
+      prettyString
+      >> printfn "%s"
 
 
 
@@ -190,6 +232,13 @@ module PrettyPrint =
       >> PPrint.render
 
 
+
+    let prettyPrint =
+      prettyString
+      >> printfn "%s"
+
+
+
   module Param =
     let pretty (Param (t, n)) =
       sep [Type.pretty t; txt n]
@@ -202,6 +251,12 @@ module PrettyPrint =
 
 
 
+    let prettyPrint =
+      prettyString
+      >> printfn "%s"
+
+
+
   module Def =
     let prettyNameAndParams n ps =
       cat [ txt n
@@ -209,6 +264,8 @@ module PrettyPrint =
           ; List.map Param.pretty ps |>  sepList (chr ',')
           ; chr ')'
           ]
+
+
 
     let prettySigWith ss signature =
           match ss with
@@ -239,6 +296,12 @@ module PrettyPrint =
 
 
 
+    let prettyPrint =
+      prettyString
+      >> printfn "%s"
+
+
+
   module Program =
     let pretty (Program ds) =
       List.map Def.pretty ds
@@ -249,6 +312,12 @@ module PrettyPrint =
     let prettyString =
       pretty
       >> PPrint.render
+
+
+
+    let prettyPrint =
+      prettyString
+      >> printfn "%s"
 
 
 
