@@ -331,7 +331,7 @@ module PrettyPrint =
 
 
 
-  let testDefAndProgram =
+  let testDefAndProgram () =
     let pr  = Def.prettyString
     let prs = pr >> strip
 
@@ -353,8 +353,6 @@ module PrettyPrint =
 
     let p = Program.prettyString (Program [d; d2])
 
-    printfn "%s" p
-
     let programs =
       testList "programs"
         [ test "1" {Expect.equal (strip p )
@@ -369,7 +367,7 @@ module PrettyPrint =
 
 
 
-  let testStmt =
+  let testStmt () =
     let pr  = Stmt.prettyString
     let prs = pr >> strip
 
@@ -432,7 +430,7 @@ module PrettyPrint =
 
 
 
-  let testExpr =
+  let testExpr () =
     let pr       = Expr.prettyString
     let bpr op   = pr (Bop (Int 1, op, Int 2))
     let cpr s es = pr (Call (s, es))
@@ -505,13 +503,13 @@ module PrettyPrint =
 
 
 
-  let allTests =
+  let allTests () =
     testList "pretty"
-      [ testExpr
-      ; testStmt
-      ; testDefAndProgram
+      [ testExpr ()
+      ; testStmt ()
+      ; testDefAndProgram ()
       ]
 
 
 
-  let test () = runTests defaultConfig allTests
+  let test () = runTests defaultConfig (allTests ())

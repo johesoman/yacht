@@ -111,7 +111,6 @@ module Generate =
 
 
 
-  let testExpr g =
-    Gen.sampleOne g
-    |> Expr.prettyString
-    |> printfn "%s"
+  let testExpr n =
+    Gen.sampleOne (Expr.generate n)
+    |> Expr.prettyPrint
