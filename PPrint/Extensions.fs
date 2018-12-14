@@ -1,4 +1,4 @@
-module Extensions
+module internal Extensions
 
 
 

@@ -9,9 +9,9 @@
 #r @"../../Parser/bin/Debug/netcoreapp2.1/Parser.dll"
 #load "External.fs"
 // lib
+#r @"../../Extensions/bin/Release/netstandard2.0/Extensions.dll"
 #r @"../../PPrint/bin/Release/netstandard2.0/PPrint.dll"
-#r @"../../Language//bin/Release/netstandard2.0/Language.dll"
-#load "Extensions.fs"
+#r @"../../Language/bin/Release/netstandard2.0/Language.dll"
 #load "GenExtensions.fs"
 #load "RunProcess.fs"
 // generator

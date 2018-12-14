@@ -13,6 +13,8 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "PPrint", "PPrint\PPrint.fsp
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Language", "Language\Language.fsproj", "{A6541638-E209-48C7-B20F-45B3C44D971F}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Extensions", "Extensions\Extensions.fsproj", "{CC845F02-5181-490A-BBF2-03F70D0471F0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -86,5 +88,17 @@ Global
 		{A6541638-E209-48C7-B20F-45B3C44D971F}.Release|x64.Build.0 = Release|Any CPU
 		{A6541638-E209-48C7-B20F-45B3C44D971F}.Release|x86.ActiveCfg = Release|Any CPU
 		{A6541638-E209-48C7-B20F-45B3C44D971F}.Release|x86.Build.0 = Release|Any CPU
+		{CC845F02-5181-490A-BBF2-03F70D0471F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC845F02-5181-490A-BBF2-03F70D0471F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC845F02-5181-490A-BBF2-03F70D0471F0}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{CC845F02-5181-490A-BBF2-03F70D0471F0}.Debug|x64.Build.0 = Debug|Any CPU
+		{CC845F02-5181-490A-BBF2-03F70D0471F0}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{CC845F02-5181-490A-BBF2-03F70D0471F0}.Debug|x86.Build.0 = Debug|Any CPU
+		{CC845F02-5181-490A-BBF2-03F70D0471F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC845F02-5181-490A-BBF2-03F70D0471F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC845F02-5181-490A-BBF2-03F70D0471F0}.Release|x64.ActiveCfg = Release|Any CPU
+		{CC845F02-5181-490A-BBF2-03F70D0471F0}.Release|x64.Build.0 = Release|Any CPU
+		{CC845F02-5181-490A-BBF2-03F70D0471F0}.Release|x86.ActiveCfg = Release|Any CPU
+		{CC845F02-5181-490A-BBF2-03F70D0471F0}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

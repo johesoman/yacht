@@ -20,6 +20,7 @@ module Types =
 
   type Uop =
     | Not
+    | Sub
 
 
 
