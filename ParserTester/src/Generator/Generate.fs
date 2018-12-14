@@ -191,8 +191,6 @@ module Generate =
         return If (e, ss, ss2)
         }
 
-
-
     and gWhile size =
       if size.current <= 0 then leafs
       else gen {

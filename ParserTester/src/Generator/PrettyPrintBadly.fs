@@ -6,7 +6,7 @@ module PrettyPrintBadly =
 
 
 
-  open PPrint
+  open PPrint.PPrint
   open Language.Types
 
 
@@ -14,11 +14,11 @@ module PrettyPrintBadly =
   module Expr =
     let prettyBad =
       function
-      | Var _ -> PPrint.empty
-      |     _ -> PPrint.empty
+      | Var s -> txt s
+      |     _ -> empty
 
 
 
     let prettyBadString =
       prettyBad
-      >> PPrint.render
+      >> render

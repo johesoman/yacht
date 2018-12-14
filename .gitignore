@@ -6,11 +6,23 @@ Interpreter/[Oo]bj/*
 Parser/[Bb]in/*
 Parser/[Oo]bj/*
 
+# PPrint
+PPrint/[Bb]in/*
+PPrint/[Oo]bj/*
+PPrint/paket-files/
+PPrint/.paket/paket.exe
+
+# Language
+Language/[Bb]in/*
+Language/[Oo]bj/*
+Language/paket-files/
+Language/.paket/paket.exe
+
 # ParserTester
-ParserTester/.paket/paket.exe
-ParserTester/paket-files/
 ParserTester/[Bb]in/*
 ParserTester/[Oo]bj/*
+ParserTester/paket-files/
+ParserTester/.paket/paket.exe
 
 # general
 .DS_Store

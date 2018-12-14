@@ -8,10 +8,7 @@
     <Compile Include="src/External.fs" />
     <Compile Include="src/Extensions.fs" />
     <Compile Include="src/GenExtensions.fs" />
-    <Compile Include="src/PPrint.fs" />
     <Compile Include="src/RunProcess.fs" />
-    <Compile Include="src/Language/LTypes.fs" />
-    <Compile Include="src/Language/LPrettyPrint.fs" />
     <Compile Include="src/Generator/PrettyPrintBadly.fs" />
     <Compile Include="src/Generator/Generate.fs" />
     <Compile Include="src/Error.fs" />
@@ -24,6 +21,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\PPrint\PPrint.fsproj" />
+    <ProjectReference Include="..\Language\Language.fsproj" />
     <ProjectReference Include="..\Parser\Parser.csproj" />
   </ItemGroup>
   <Import Project=".paket\Paket.Restore.targets" />

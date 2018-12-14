@@ -9,13 +9,11 @@
 #r @"../../Parser/bin/Debug/netcoreapp2.1/Parser.dll"
 #load "External.fs"
 // lib
+#r @"../../PPrint/bin/Release/netstandard2.0/PPrint.dll"
+#r @"../../Language//bin/Release/netstandard2.0/Language.dll"
 #load "Extensions.fs"
 #load "GenExtensions.fs"
-#load "PPrint.fs"
 #load "RunProcess.fs"
-// language
-#load "Language/LTypes.fs"
-#load "Language/LPrettyPrint.fs"
 // generator
 #load "Generator/PrettyPrintBadly.fs"
 #load "Generator/Generate.fs"
