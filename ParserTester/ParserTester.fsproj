@@ -8,8 +8,8 @@
     <Compile Include="src/External.fs" />
     <Compile Include="src/GenExtensions.fs" />
     <Compile Include="src/RunProcess.fs" />
-    <Compile Include="src/Generator/PrettyPrintBadly.fs" />
     <Compile Include="src/Generator/Generate.fs" />
+    <Compile Include="src/Generator/PrettyPrintBadly.fs" />
     <Compile Include="src/Error.fs" />
     <Compile Include="src/Application.fs" />
     <Compile Include="src/Program.fs" />

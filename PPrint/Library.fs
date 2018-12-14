@@ -171,9 +171,10 @@ module PPrint =
 
     let sb = Text.StringBuilder 64
 
-    for i = 0 to Array.length charGrid - 2 do
-      sb.Append charGrid.[i]        |> ignore
-      sb.Append Environment.NewLine |> ignore
+    for i = 0 to Array.length charGrid - 1 do
+      sb.Append charGrid.[i] |> ignore
 
-    sb.Append (Array.last charGrid) |> ignore
+      if i <> Array.length charGrid - 1 then
+        sb.Append Environment.NewLine |> ignore
+
     sb.ToString ()

@@ -15,8 +15,8 @@
 #load "GenExtensions.fs"
 #load "RunProcess.fs"
 // generator
-#load "Generator/PrettyPrintBadly.fs"
 #load "Generator/Generate.fs"
+#load "Generator/PrettyPrintBadly.fs"
 // application
 #load "Error.fs"
 #load "Application.fs"
