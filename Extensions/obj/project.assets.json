@@ -283,11 +283,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/j/Desktop/compilertester/Extensions/Extensions.fsproj",
+      "projectUniqueName": "/Users/j/Desktop/yacht/Extensions/Extensions.fsproj",
       "projectName": "Extensions",
-      "projectPath": "/Users/j/Desktop/compilertester/Extensions/Extensions.fsproj",
+      "projectPath": "/Users/j/Desktop/yacht/Extensions/Extensions.fsproj",
       "packagesPath": "/Users/j/.nuget/packages/",
-      "outputPath": "/Users/j/Desktop/compilertester/Extensions/obj/",
+      "outputPath": "/Users/j/Desktop/yacht/Extensions/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
