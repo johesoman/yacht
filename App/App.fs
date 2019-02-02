@@ -36,7 +36,7 @@ let check s x =
   match Console.ReadLine() with
   | "error" -> false
   | _       ->
-      printfn "%s" s
+      printfn "%s" x
       true
 
 
