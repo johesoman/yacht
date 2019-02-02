@@ -1,2 +1,2 @@
-# yacht
-Yet another compilerdev helper tool.
+# YACHT
+Yet Another Compiler developer Helper Tool.
