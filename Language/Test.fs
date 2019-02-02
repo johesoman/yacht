@@ -196,7 +196,7 @@ module Test =
 
 
 
-  let allTests () =
+  let all () =
     testList "pretty"
       [ testExpr ()
       ; testStmt ()
@@ -205,4 +205,4 @@ module Test =
 
 
 
-  let runAllTests () = runTests defaultConfig (allTests ())
+  let runAll () = runTests defaultConfig (all ())

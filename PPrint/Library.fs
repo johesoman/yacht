@@ -12,7 +12,7 @@ module PPrint =
 
 
   type Doc =
-    | Text  of char []
+    | Chr   of char
     | Sep   of Doc  []
     | Cat   of Doc  []
     | Lines of Doc  []
@@ -26,9 +26,15 @@ module PPrint =
 
 
 
-  let txt : string -> Doc = String.toCharArray >> Text
+  let txt : string -> Doc =
+    String.toCharArray
+    >> Array.map Chr
+    >> Cat
 
-  let chr : char -> Doc = Array.singleton >> Text
+
+
+
+  let chr : char -> Doc = Chr
 
   let sep : _ seq -> Doc = Seq.toArray >> Sep
 
@@ -46,7 +52,7 @@ module PPrint =
 
 
 
-  let empty = Text [||]
+  let empty = Cat [||]
 
 
 
@@ -120,7 +126,6 @@ module PPrint =
 
   let isEmpty =
     function
-    | Text  [||] -> true
     | Sep   [||] -> true
     | Cat   [||] -> true
     | Lines [||] -> true
@@ -149,7 +154,7 @@ module PPrint =
 
     and go : Doc -> char [] [] =
       function
-      | Text cs -> [|cs|]
+      | Chr c -> [|[|c|]|]
 
       | Sep ds ->
           Array.removeBy isEmpty ds

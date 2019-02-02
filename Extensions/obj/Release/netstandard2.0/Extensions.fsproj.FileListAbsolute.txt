@@ -6,3 +6,11 @@
 /Users/j/Desktop/compilertester/Extensions/obj/Release/netstandard2.0/Extensions.AssemblyInfo.fs
 /Users/j/Desktop/compilertester/Extensions/obj/Release/netstandard2.0/Extensions.dll
 /Users/j/Desktop/compilertester/Extensions/obj/Release/netstandard2.0/Extensions.pdb
+/Users/j/Desktop/yacht/Extensions/bin/Release/netstandard2.0/Extensions.deps.json
+/Users/j/Desktop/yacht/Extensions/bin/Release/netstandard2.0/Extensions.dll
+/Users/j/Desktop/yacht/Extensions/bin/Release/netstandard2.0/Extensions.pdb
+/Users/j/Desktop/yacht/Extensions/obj/Release/netstandard2.0/Extensions.fsprojAssemblyReference.cache
+/Users/j/Desktop/yacht/Extensions/obj/Release/netstandard2.0/Extensions.AssemblyInfoInputs.cache
+/Users/j/Desktop/yacht/Extensions/obj/Release/netstandard2.0/Extensions.AssemblyInfo.fs
+/Users/j/Desktop/yacht/Extensions/obj/Release/netstandard2.0/Extensions.dll
+/Users/j/Desktop/yacht/Extensions/obj/Release/netstandard2.0/Extensions.pdb
