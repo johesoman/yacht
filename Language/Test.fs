@@ -10,7 +10,7 @@ module Test =
   open Expecto
   open Language.Types
   open Language.PrettyPrint
-  open Extensions.Extensions
+  open Extensions
 
 
 

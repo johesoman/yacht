@@ -4,7 +4,7 @@ module Error
 
 open System
 open System.IO
-open Extensions.Extensions
+open Extensions
 
 
 

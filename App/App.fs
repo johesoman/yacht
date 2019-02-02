@@ -1,20 +1,9 @@
-module Application
+module App
 
 
 
-// dotnet
 open System
-open System.IO
-open System.Text
-
-// generator
-// open Generator.Types
-// open Generator.Generate
-// open Generator.PrettyPrint
-
-// other
-open Error
-open RunProcess
+open Extensions
 
 
 
@@ -23,6 +12,53 @@ type TestInfo =
   ; command       : string
   ; arguments     : string []
   }
+
+
+
+let run generate action check n =
+  let rec go i =
+    if n <= i then ()
+    else
+      let x = generate ()
+
+      match action (i + 1) x with
+      | None -> ()
+      | Some result ->
+          if check result x
+            then go (i + 1)
+            else ()
+
+  go 0
+
+
+
+let check s x =
+  match Console.ReadLine() with
+  | "error" -> false
+  | _       ->
+      printfn "%s" s
+      true
+
+
+
+let generate () =
+  let n   = 10
+  let pos = lazy (ParserTester.Generate.positive        n)
+  let neg = lazy (ParserTester.Generate.negative (1,10) n)
+
+  Rand.choose (1, pos) (1, neg)
+  |> Lazy.force
+
+
+
+let action i x =
+  printfn "This is test number %A" i
+
+  Some ""
+
+
+let test () =
+  run generate action check 5
 
 
 

@@ -2,7 +2,7 @@ namespace ParserTester
 
 
 
-module PrettyPrintBadly =
+module Negative =
 
 
 
@@ -10,19 +10,10 @@ module PrettyPrintBadly =
   open Extensions
   open PPrint.PPrint
   open Language.PrettyPrint
-  open Extensions.Extensions
 
 
 
   module Doc =
-    let tossCoin doFreq dontFreq =
-      Gen.frequency
-        [ doFreq  , gen { return true }
-        ; dontFreq, gen { return false }
-        ]
-
-
-
     let swap (x : _ byref) (y : _ byref) =
       let z = x
       x <- y
@@ -30,7 +21,7 @@ module PrettyPrintBadly =
 
 
 
-    let fuzz doFreq dontFreq =
+    let fuzz (doFreq, dontFreq) =
       let rec goFuzz xs = gen {
         let! ys =
           Array.map go xs
@@ -39,8 +30,8 @@ module PrettyPrintBadly =
         let n = Array.length ys
 
         for i = 0 to n - 1 do
-          let! doForget = tossCoin doFreq dontFreq
-          let! doSwap   = tossCoin doFreq dontFreq
+          let! doForget = Gen.tossCoin doFreq dontFreq
+          let! doSwap   = Gen.tossCoin doFreq dontFreq
 
           if doForget then ys.[i] <- empty
           if doSwap   then
@@ -75,33 +66,35 @@ module PrettyPrintBadly =
 
 
   module Program =
-    let prettyBad doFreq dontFreq d =
+    let pretty freq d =
       Program.pretty d
-      |> Doc.fuzz doFreq dontFreq
+      |> Doc.fuzz freq
 
 
 
-    let prettyBadString doFreq dontFreq =
-      prettyBad doFreq dontFreq
+    let prettyString freq =
+      pretty freq
       >> render
 
 
 
-    let prettyPrintBadly doFreq dontFreq =
-      prettyBadString doFreq dontFreq
+    let prettyPrint freq =
+      prettyString freq
       >> printfn "%s"
-
 
 
 
   // +++++++++++
   // + testing +
   // +++++++++++
-  open ParserTester.Generate
 
 
 
-  let testProgram doFreq dontFreq n =
+  open ParserTester.Positive
+
+
+
+  let testProgram freq n =
     Gen.sampleOne (Program.generate n)
-    |> Program.prettyPrintBadly doFreq dontFreq
+    |> Program.prettyPrint freq
 

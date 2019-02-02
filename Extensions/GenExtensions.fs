@@ -11,6 +11,14 @@ module Gen =
 
 
 
+  let tossCoin trueFreq falseFreq =
+    Gen.frequency
+      [ trueFreq , gen { return true }
+      ; falseFreq, gen { return false }
+      ]
+
+
+
   let sampleOne g =
     Gen.sample 0 1 g
     |> List.head
@@ -49,3 +57,24 @@ module Gen =
     let! cs = alphaNumString lenLo (lenHi - 1)
     return string c + cs
     }
+
+
+
+module Rand =
+
+
+
+  open FsCheck
+
+
+
+  let choose (xFreq, x) (yFreq, y) =
+    let g = gen {
+      let! first = Gen.tossCoin xFreq yFreq
+
+      if first
+        then return x
+        else return y
+      }
+
+    Gen.sampleOne g

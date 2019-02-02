@@ -24,7 +24,7 @@
     <Compile Include="External.fs" />
     <Compile Include="RunProcess.fs" />
     <Compile Include="Error.fs" />
-    <Compile Include="Application.fs" />
+    <Compile Include="App.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
   <ItemGroup>
