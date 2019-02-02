@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../Extensions/Extensions.fsproj">
+      <Name>Extensions.fsproj</Name>
+    </ProjectReference>
+    <ProjectReference Include="../Language/Language.fsproj">
+      <Name>Language.fsproj</Name>
+    </ProjectReference>
+    <ProjectReference Include="../ParserTester/ParserTester.fsproj">
+      <Name>ParserTester.fsproj</Name>
+    </ProjectReference>
+    <ProjectReference Include="../Parser/Parser.csproj">
+      <Name>Parser.csproj</Name>
+    </ProjectReference>
+    <ProjectReference Include="../Interpreter/Interpreter.csproj">
+      <Name>Interpreter.csproj</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="External.fs" />
+    <Compile Include="RunProcess.fs" />
+    <Compile Include="Error.fs" />
+    <Compile Include="Application.fs" />
+    <Compile Include="Program.fs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="QUT.ShiftReduceParser">
+      <HintPath>..\Parser\QUT.ShiftReduceParser.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <Import Project="..\.paket\Paket.Restore.targets" />
+</Project>

@@ -1,29 +1,24 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="src/External.fs" />
-    <Compile Include="src/GenExtensions.fs" />
-    <Compile Include="src/RunProcess.fs" />
-    <Compile Include="src/Generator/Generate.fs" />
-    <Compile Include="src/Generator/PrettyPrintBadly.fs" />
-    <Compile Include="src/Error.fs" />
-    <Compile Include="src/Application.fs" />
-    <Compile Include="src/Program.fs" />
+    <ProjectReference Include="../Extensions/Extensions.fsproj">
+      <Name>Extensions.fsproj</Name>
+    </ProjectReference>
+    <ProjectReference Include="../PPrint/PPrint.fsproj">
+      <Name>PPrint.fsproj</Name>
+    </ProjectReference>
+    <ProjectReference Include="../Language/Language.fsproj">
+      <Name>Language.fsproj</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="QUT.ShiftReduceParser">
-      <HintPath>..\Parser\QUT.ShiftReduceParser.dll</HintPath>
-    </Reference>
+    <Compile Include="Generate.fs" />
+    <Compile Include="PrettyPrintBadly.fs" />
+    <Compile Include="Program.fs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Extensions\Extensions.fsproj" />
-    <ProjectReference Include="..\PPrint\PPrint.fsproj" />
-    <ProjectReference Include="..\Language\Language.fsproj" />
-    <ProjectReference Include="..\Parser\Parser.csproj" />
-  </ItemGroup>
-  <Import Project=".paket\Paket.Restore.targets" />
+  <Import Project="..\.paket\Paket.Restore.targets" />
 </Project>

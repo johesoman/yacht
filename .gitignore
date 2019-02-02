@@ -9,20 +9,27 @@ Parser/[Oo]bj/*
 # PPrint
 PPrint/[Bb]in/*
 PPrint/[Oo]bj/*
-PPrint/paket-files/
-PPrint/.paket/paket.exe
 
 # Language
 Language/[Bb]in/*
 Language/[Oo]bj/*
-Language/paket-files/
-Language/.paket/paket.exe
 
 # ParserTester
 ParserTester/[Bb]in/*
 ParserTester/[Oo]bj/*
-ParserTester/paket-files/
-ParserTester/.paket/paket.exe
+
+# App
+App/[Bb]in/*
+App/[Oo]bj/*
+
+# Extensions
+Extensions/[Bb]in/*
+Extensions/[Oo]bj/*
+
+# Root
+.paket/paket.exe
+paket-files/
+.paket/paket.exe
 
 # general
 .DS_Store
