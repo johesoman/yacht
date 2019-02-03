@@ -1,0 +1,71 @@
+
+// ==========================================================================
+//  GPLEX error listing for lex source file <Lexer.l>
+// ==========================================================================
+//  Version:  1.2.2
+//  Machine:  LAPTOP-B7BUAEVP
+//  DateTime: 12/7/2018 6:54:25 PM
+//  UserName: Ray
+// ==========================================================================
+
+
+%option out:Generated/Lexer.cs
+%namespace Parser
+%using QUT.Gppg;
+
+alpha [a-zA-Z] 
+digit [0-9]
+alphanum {alpha}|{digit}
+
+%%
+
+" "|\r|\n       { }
+//.*$           { }
+
+
+^[-|!]                                { return (int) Tokens.UOP; }
+// Warning: Special case: "-" included as set class member
+// -------------------------------------------------------
+\|\||&&|==|!=|<|>|<=|>=|\+|\*|\/  { return (int) Tokens.BOP; }
+
+";"         { return (int) Tokens.SEMI; }
+"="         { return (int) Tokens.ASN; }
+"("         { return (int) Tokens.LPAR; }
+")"         { return (int) Tokens.RPAR; }
+","         { return (int) Tokens.COMMA; }
+"{"         { return (int) Tokens.LBRA; }
+"}"         { return (int) Tokens.RBRA; }
+"int"       { return (int) Tokens.INT; }
+"bool"      { return (int) Tokens.BOOL; }
+"if"        { return (int) Tokens.IF; }
+"else"      { return (int) Tokens.ELSE; }
+"while"     { return (int) Tokens.WHILE; }
+"return"    { return (int) Tokens.RETURN; }
+"true"      { return (int) Tokens.TRUE; }
+"false"     { return (int) Tokens.FALSE; }
+"void"      { return (int) Tokens.VOID; }
+"bop"       { return (int) Tokens.BOP; }
+"uop"       { return (int) Tokens.UOP; }
+
+{alpha}{alphanum}*      { yylval.value = yytext;
+                          return (int) Tokens.ID; 
+                        }
+                        
+{digit}+                { yylval.value = yytext;
+                          return (int) Tokens.NUM; 
+                        }
+
+.                       { yylval.value = yytext;
+                          return (int) Tokens.ERR;
+                        }
+
+%{
+	yylloc = new LexLocation(tokLin, tokCol, tokELin, tokECol);
+%}
+
+%%
+
+override public void yyerror(string msg, object[] arg) {
+  Console.WriteLine("{0} on line {1} column {2}", msg, yylloc.StartLine, yylloc.StartColumn);
+}// ==========================================================================
+

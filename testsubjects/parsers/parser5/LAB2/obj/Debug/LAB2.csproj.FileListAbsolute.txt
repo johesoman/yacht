@@ -1,0 +1,9 @@
+C:\Users\LennardsVM\source\repos\LAB2\LAB2\bin\Debug\LAB2.exe.config
+C:\Users\LennardsVM\source\repos\LAB2\LAB2\bin\Debug\LAB2.exe
+C:\Users\LennardsVM\source\repos\LAB2\LAB2\bin\Debug\LAB2.pdb
+C:\Users\LennardsVM\source\repos\LAB2\LAB2\obj\Debug\LAB2.csprojAssemblyReference.cache
+C:\Users\LennardsVM\source\repos\LAB2\LAB2\obj\Debug\LAB2.csproj.CoreCompileInputs.cache
+C:\Users\LennardsVM\source\repos\LAB2\LAB2\obj\Debug\LAB2.exe
+C:\Users\LennardsVM\source\repos\LAB2\LAB2\obj\Debug\LAB2.pdb
+C:\Users\LennardsVM\source\repos\LAB2\LAB2\bin\Debug\QUT.ShiftReduceParser.dll
+C:\Users\LennardsVM\source\repos\LAB2\LAB2\obj\Debug\LAB2.csproj.CopyComplete

@@ -1,0 +1,16 @@
+D:\Dev\Compiler-Theory-DVA339\Lab2\Lab2\bin\Debug\Lab2.exe.config
+D:\Dev\Compiler-Theory-DVA339\Lab2\Lab2\bin\Debug\Lab2.exe
+D:\Dev\Compiler-Theory-DVA339\Lab2\Lab2\bin\Debug\Lab2.pdb
+D:\Dev\Compiler-Theory-DVA339\Lab2\Lab2\bin\Debug\QUT.ShiftReduceParser.dll
+D:\Dev\Compiler-Theory-DVA339\Lab2\Lab2\obj\Debug\Lab2.csprojResolveAssemblyReference.cache
+D:\Dev\Compiler-Theory-DVA339\Lab2\Lab2\obj\Debug\Lab2.csproj.CoreCompileInputs.cache
+D:\Dev\Compiler-Theory-DVA339\Lab2\Lab2\obj\Debug\Lab2.exe
+D:\Dev\Compiler-Theory-DVA339\Lab2\Lab2\obj\Debug\Lab2.pdb
+C:\Users\Ray\Desktop\Robin+Johansson+&+Rodny+Andersson\Lab2\obj\Debug\Lab2.csprojResolveAssemblyReference.cache
+C:\Users\Ray\Desktop\Robin+Johansson+&+Rodny+Andersson\Lab2\obj\Debug\Lab2.csproj.CoreCompileInputs.cache
+C:\Users\Ray\Desktop\Robin+Johansson+&+Rodny+Andersson\Lab2\obj\Debug\Lab2.exe
+C:\Users\Ray\Desktop\Robin+Johansson+&+Rodny+Andersson\Lab2\obj\Debug\Lab2.pdb
+C:\Users\Ray\Desktop\Robin+Johansson+&+Rodny+Andersson\Lab2\bin\Debug\Lab2.exe.config
+C:\Users\Ray\Desktop\Robin+Johansson+&+Rodny+Andersson\Lab2\bin\Debug\Lab2.exe
+C:\Users\Ray\Desktop\Robin+Johansson+&+Rodny+Andersson\Lab2\bin\Debug\Lab2.pdb
+C:\Users\Ray\Desktop\Robin+Johansson+&+Rodny+Andersson\Lab2\bin\Debug\QUT.ShiftReduceParser.dll

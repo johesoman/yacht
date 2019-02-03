@@ -1,0 +1,30 @@
+// Parser Conflict Information for grammar file "Parser.y - 2018-12-01 14:33:48"
+
+Shift/Reduce conflict on symbol ""else"", parser will shift
+ Reduce 10:	Stmt -> "if", "(", Expr, ")", Stmt
+ Shift ""else"":	State-22 -> State-23
+  Items for From-state State 22
+    10 Stmt: "if" "(" Expr ")" Stmt .
+	-lookahead: "*", "else"
+    11 Stmt: "if" "(" Expr ")" Stmt . "else" Stmt 
+  Items for Next-state State 23
+    11 Stmt: "if" "(" Expr ")" Stmt "else" . Stmt 
+
+Shift/Reduce conflict on symbol ""bop"", parser will shift
+ Reduce 28:	Test -> /* empty */
+ Shift ""bop"":	State-34 -> State-36
+  Items for From-state State 34
+    26 Expr: FExpr . Test 
+  Items for Next-state State 36
+    27 Test: "bop" . Expr 
+
+Shift/Reduce conflict on symbol ""("", parser will shift
+ Reduce 25:	Bajs -> /* empty */
+ Shift ""("":	State-41 -> State-50
+  Items for From-state State 41
+    20 FExpr: "id" . "=" Expr 
+    21 FExpr: "id" . Bajs 
+  Items for Next-state State 50
+    24 Bajs: "(" . ExprList ")" 
+
+// End conflict information for parser

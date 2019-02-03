@@ -1,0 +1,9 @@
+/Users/j/Downloads/submissions/parser5/LAB2/bin/Release/LAB2.exe.config
+/Users/j/Downloads/submissions/parser5/LAB2/bin/Release/LAB2.exe
+/Users/j/Downloads/submissions/parser5/LAB2/bin/Release/LAB2.pdb
+/Users/j/Downloads/submissions/parser5/LAB2/bin/Release/QUT.ShiftReduceParser.dll
+/Users/j/Downloads/submissions/parser5/LAB2/obj/Release/LAB2.csprojAssemblyReference.cache
+/Users/j/Downloads/submissions/parser5/LAB2/obj/Release/LAB2.csproj.CoreCompileInputs.cache
+/Users/j/Downloads/submissions/parser5/LAB2/obj/Release/LAB2.csproj.CopyComplete
+/Users/j/Downloads/submissions/parser5/LAB2/obj/Release/LAB2.exe
+/Users/j/Downloads/submissions/parser5/LAB2/obj/Release/LAB2.pdb

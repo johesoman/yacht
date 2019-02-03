@@ -52,8 +52,7 @@ type Options =
 
 
 
-[<EntryPoint>]
-let main argv =
+let runApp argv =
   let result = CommandLine.Parser.Default.ParseArguments<Options>(argv)
   match result with
   | :? Parsed<Options> as parsed ->
@@ -68,7 +67,29 @@ let main argv =
   | :? NotParsed<Options> -> ()
   | _ -> ()
 
-  0
+
+
+let runTests path =
+  let split (s : string) =
+    let s2 = s.Split " "
+    [|s2.[0]; String.concat " " s2.[1 ..]|]
+
+  let cmds =
+    System.IO.File.ReadAllLines path
+    |> Array.map (split >> Array.append [|"-c"|])
+
+  runApp cmds.[0]
+
+
+
+let testParsers () = runTests "testsubjects/parsers/cmds.txt"
+
+
+
+[<EntryPoint>]
+let main argv = runApp argv; 0
+
+
 
 
 

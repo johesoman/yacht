@@ -1,0 +1,9 @@
+C:\Users\jojjo\source\repos\Labb2.1\obj\Debug\Labb2.1.csproj.CoreCompileInputs.cache
+C:\Users\jojjo\source\repos\Labb2.1\bin\Debug\Labb2.1.exe.config
+C:\Users\jojjo\source\repos\Labb2.1\bin\Debug\Labb2.1.exe
+C:\Users\jojjo\source\repos\Labb2.1\bin\Debug\Labb2.1.pdb
+C:\Users\jojjo\source\repos\Labb2.1\bin\Debug\QUT.ShiftReduceParser.dll
+C:\Users\jojjo\source\repos\Labb2.1\obj\Debug\Labb2.1.csproj.CopyComplete
+C:\Users\jojjo\source\repos\Labb2.1\obj\Debug\Labb2.1.exe
+C:\Users\jojjo\source\repos\Labb2.1\obj\Debug\Labb2.1.pdb
+C:\Users\jojjo\source\repos\Labb2.1\obj\Debug\Labb2.1.csprojResolveAssemblyReference.cache

@@ -1,0 +1,102 @@
+int oTC(bool vAG, bool E, bool lv)
+{
+  {
+    return kh;
+    if (false)
+    {
+      Xz(Ogz = true, !N, !wos());
+      return KO(hnz)+Xoo(JS0, p(), lqX(tn))/40;
+    }
+    else
+    {
+      while (88)
+      {
+        {
+        }
+      }
+    }
+    if (((J = !G(cB(true, sax = true), 86)*true)<=!(T = cWv(8, v8)))+((mtV = !272-6)||(xW!=485)<=Cn/m4J(D((ydU = liw(36))-lGZ))))
+    {
+    }
+    else
+    {
+    }
+  }
+}
+bool jr(int t)
+{
+  {
+    {
+      {
+        {
+          {
+            if (f)
+            {
+              if (raU = 5)
+              {
+              }
+              else
+              {
+                !(Q2 = true);
+              }
+              return !true;
+            }
+            else
+            {
+              NB();
+              while (true==(false+ww)*(Q = LJ))
+              {
+                3;
+              }
+              P = Hf;
+            }
+            while (true)
+            {
+            }
+          }
+          {
+            {
+              {
+                CqB;
+              }
+            }
+            false;
+            int i;
+          }
+        }
+        if (c7j = Wn = 814)
+        {
+        }
+        else
+        {
+          while (551)
+          {
+          }
+        }
+      }
+      return 16;
+    }
+    return false;
+  }
+  if (273)
+  {
+    while (721)
+    {
+      return (Igc = true);
+      while (V(a = 115, K(), rwF = vL2(l4T = Se, false, (Z7x||WV>=uXk(S = JFh, false, wDv(KE, 7, false)))+j(Isc))*75<=!(Hna = (G = 7)>(E54 = !GP))))
+      {
+        83;
+        int UVP;
+      }
+      {
+      }
+    }
+  }
+  else
+  {
+  }
+  bool bT;
+}
+void UA(int Aqv)
+{
+}

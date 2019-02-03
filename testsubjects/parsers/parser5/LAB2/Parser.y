@@ -1,0 +1,154 @@
+﻿%output=Generated/Parser.cs
+%namespace Parser
+
+%union {
+  public string value;
+  
+  public Expression E;
+  public Declaration D;
+  public Statement S;
+  public List<Expression> L;
+  public List<Declaration> DL;
+  public List<Statement> Ss;
+}
+
+%token <value> BOOLEAN
+%token <value> ID
+%token <value> NUM
+%token <value> ERR
+
+%token IF "if"
+%token ELSE "else"
+%token WHILE "while"
+%token RETURN "return"
+%token INT "int"
+%token BOOL "bool"
+%token VOID "void"
+
+%token TRUE "true"
+%token FALSE "false"
+
+%token ASN "="
+%token AND "&&"
+%token OR "||"
+%token EQ "=="
+%token NEQ "!="
+%token LT "<"
+%token GT ">"
+%token LEQ "<="
+%token GEQ ">="
+%token ADD "+"
+%token SUB "-"
+%token MUL "*"
+%token DIV "/"
+%token NOT "!"
+
+%token LPAR "("
+%token RPAR ")"
+%token LPRA "{"
+%token RPRA "}"
+%token SEMI ";"
+%token COMMA ","
+
+%type <S> Stmt, Stmt1
+%type <Ss> Stmts, FormalList
+%type <D> Decl
+%type <DL> Decls
+%type <E> Expr, Expr1, Expr2, Expr3, Expr4, Expr5, Expr6, Expr7, Expr8
+%type <L> ExprList
+
+
+%%
+Program : Decls EOF                                   { Program = new Program1($1); }
+        ;
+
+Decls  : Decls Decl                                   { $$ = $1; $$.Add($2);}
+       |	                                         { $$ = new List<Declaration>(); }
+       ;
+
+Decl   : "int" ID "(" FormalList ")" "{" Stmts "}"     { $$ = new TypeDeclaration(TypeDeclaration.Type.INT, $2, $4, $7); $$.SetLocation(@1); }
+	   |  "bool" ID "(" FormalList ")" "{" Stmts "}"     { $$ = new TypeDeclaration(TypeDeclaration.Type.BOOL, $2, $4, $7); $$.SetLocation(@1); }
+       |  "void" ID "(" FormalList ")" "{" Stmts "}"     { $$ = new TypeDeclaration(TypeDeclaration.Type.VOID, $2, $4, $7); $$.SetLocation(@1); }
+       ;
+
+FormalList : FormalList "," "int" ID                    { $$ = $1; $$.Add(new TypeDef(TypeDef.Type.INT, $4)); }
+		   |   FormalList "," "bool" ID                 { $$ = $1; $$.Add(new TypeDef(TypeDef.Type.BOOL, $4)); }
+		   |   "int"  ID                                { $$ = new List<Statement>(); $$.Add(new TypeDef(TypeDef.Type.INT, $2));}
+	       |   "bool" ID                                { $$ = new List<Statement>(); $$.Add(new TypeDef(TypeDef.Type.BOOL, $2));}
+	       |								    	  { $$ = new List<Statement>(); }
+      ;
+      
+
+
+Stmt  :  "{" Stmts "}"                                { $$ = new BlockStatement($2); $$.SetLocation(@1); }
+      |  "if" "(" Expr ")" Stmt Stmt1                 { $$ = new IfStatement($3, $5, $6); $$.SetLocation(@1); }
+      |  "while" "(" Expr ")" Stmt                    { $$ = new WhileStatement($3, $5); $$.SetLocation(@1); }
+      |  "return" Expr ";"                            { $$ = new ReturnStatement($2); $$.SetLocation(@1); }
+      |  "return" ";"                                 { $$ = new ReturnStatement(); $$.SetLocation(@1); }
+      |  Expr ";"                                     { $$ = new ExpressionStatement($1); $$.SetLocation(@1); }
+      |  INT ID ";"								      { $$ = new TypeDef(TypeDef.Type.INT, $2); $$.SetLocation(@1); }
+      |  BOOL ID ";"                                  { $$ = new TypeDef(TypeDef.Type.BOOL, $2); $$.SetLocation(@1); }
+      ;
+
+Stmt1 : "else" Stmt	                                  { $$ = $2; }
+      |		                                         
+	  ;
+
+Stmts : Stmts Stmt                                    { $$ = $1; $$.Add($2); }
+	  |												  { $$ = new List<Statement>(); }
+      ;
+
+Expr  :   ID "=" Expr								  { $$ = new AssignmentExpression($1, $3); $$.SetLocation(@1); }
+      |   Expr1                                       { $$ = $1; }
+      ;
+
+Expr1 :   Expr1 "||" Expr2                            { $$ = new BinaryOperatorExpression(BinaryOperatorExpression.Type.OR, $1, $3); $$.SetLocation(@1); }
+      |   Expr2                                       { $$ = $1; }
+      ;
+
+Expr2 :   Expr2 "&&" Expr3                            { $$ = new BinaryOperatorExpression(BinaryOperatorExpression.Type.AND, $1, $3); $$.SetLocation(@1); }
+      |   Expr3                                       { $$ = $1; }
+      ;
+
+Expr3 :   Expr3 "==" Expr4                            { $$ = new BinaryOperatorExpression(BinaryOperatorExpression.Type.EQ, $1, $3); $$.SetLocation(@1); }
+      |   Expr3 "!=" Expr4                            { $$ = new BinaryOperatorExpression(BinaryOperatorExpression.Type.NEQ, $1, $3); $$.SetLocation(@1); }
+      |   Expr4                                       { $$ = $1; }
+      ;
+
+Expr4 :   Expr4 "<=" Expr5                            { $$ = new BinaryOperatorExpression(BinaryOperatorExpression.Type.LEQ, $1, $3); $$.SetLocation(@1); }
+      |   Expr4 ">=" Expr5                            { $$ = new BinaryOperatorExpression(BinaryOperatorExpression.Type.GEQ, $1, $3); $$.SetLocation(@1); }
+      |   Expr4 "<" Expr5                             { $$ = new BinaryOperatorExpression(BinaryOperatorExpression.Type.LT, $1, $3); $$.SetLocation(@1); }
+      |   Expr4 ">" Expr5                             { $$ = new BinaryOperatorExpression(BinaryOperatorExpression.Type.GT, $1, $3); $$.SetLocation(@1); }
+      |   Expr5                                       { $$ = $1; }
+      ;
+
+Expr5 :   Expr5 "+" Expr6                             { $$ = new BinaryOperatorExpression(BinaryOperatorExpression.Type.ADD, $1, $3); $$.SetLocation(@1); }
+      |   Expr5 "-" Expr6                             { $$ = new BinaryOperatorExpression(BinaryOperatorExpression.Type.SUB, $1, $3); $$.SetLocation(@1); }
+      |   Expr6                                       { $$ = $1; }
+      ;
+
+Expr6 :   Expr6 "*" Expr7                             { $$ = new BinaryOperatorExpression(BinaryOperatorExpression.Type.MUL, $1, $3); $$.SetLocation(@1); }
+      |   Expr6 "/" Expr7                             { $$ = new BinaryOperatorExpression(BinaryOperatorExpression.Type.DIV, $1, $3); $$.SetLocation(@1); }
+      |   Expr7                                       { $$ = $1; }
+      ;
+
+Expr7 :   "!" Expr7                                   { $$ = new UnaryExpression(UnaryExpression.Type.NOT, $2); $$.SetLocation(@1); }
+      |	  "-" Expr7									  { $$ = new UnaryExpression(UnaryExpression.Type.NEG, $2); $$.SetLocation(@1); }
+	  |   Expr8                                       { $$ = $1; }
+      ;
+
+Expr8 :   NUM										  { $$ = new NumberExpression($1); $$.SetLocation(@1); } 
+      |   BOOLEAN                                     { $$ = new BoolExpression($1); $$.SetLocation(@1); }
+      |	  ID "(" ExprList ")"						  { $$ = new FunctionExpression($1, $3); $$.SetLocation(@1); }
+	  |   ID									  	  { $$ = new IdentifierExpression($1); $$.SetLocation(@1); } 
+	  |	  "(" Expr ")"								  { $$ = $2;}
+      ;
+
+ExprList : Expr										  { $$ = new List<Expression>(); $$.Add($1);}
+		| ExprList "," Expr							  { $$ = $1; $$.Add($3);}
+		|											  { $$ = new List<Expression>();}
+		;
+%%
+
+public Parser(Scanner s) : base(s) { }
+public Program1 Program; 

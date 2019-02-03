@@ -1,0 +1,27 @@
+C:/Users/uef16001/OneDrive - Mälardalens högskola/kompilatorteori/Lab2/Lab2/Parser/bin/Release/Parser.exe.config
+C:/Users/uef16001/OneDrive - Mälardalens högskola/kompilatorteori/Lab2/Lab2/Parser/bin/Release/Parser.exe
+C:/Users/uef16001/OneDrive - Mälardalens högskola/kompilatorteori/Lab2/Lab2/Parser/bin/Release/Parser.pdb
+C:/Users/uef16001/OneDrive - Mälardalens högskola/kompilatorteori/Lab2/Lab2/Parser/bin/Release/QUT.ShiftReduceParser.dll
+C:/Users/uef16001/OneDrive - Mälardalens högskola/kompilatorteori/Lab2/Lab2/Parser/obj/Release/Parser.csproj.CoreCompileInputs.cache
+C:/Users/uef16001/OneDrive - Mälardalens högskola/kompilatorteori/Lab2/Lab2/Parser/obj/Release/Parser.csproj.CopyComplete
+C:/Users/uef16001/OneDrive - Mälardalens högskola/kompilatorteori/Lab2/Lab2/Parser/obj/Release/Parser.exe
+C:/Users/uef16001/OneDrive - Mälardalens högskola/kompilatorteori/Lab2/Lab2/Parser/obj/Release/Parser.pdb
+C:/Users/uef16001/OneDrive - Mälardalens högskola/kompilatorteori/Lab2/Lab2/Parser/obj/Release/Parser.csprojAssemblyReference.cache
+C:/Users/blandfars/OneDrive - Mälardalens högskola/kompilatorteori/Lab2/Lab2/Parser/bin/Release/Parser.exe.config
+C:/Users/blandfars/OneDrive - Mälardalens högskola/kompilatorteori/Lab2/Lab2/Parser/bin/Release/Parser.exe
+C:/Users/blandfars/OneDrive - Mälardalens högskola/kompilatorteori/Lab2/Lab2/Parser/bin/Release/Parser.pdb
+C:/Users/blandfars/OneDrive - Mälardalens högskola/kompilatorteori/Lab2/Lab2/Parser/bin/Release/QUT.ShiftReduceParser.dll
+C:/Users/blandfars/OneDrive - Mälardalens högskola/kompilatorteori/Lab2/Lab2/Parser/obj/Release/Parser.csproj.CoreCompileInputs.cache
+C:/Users/blandfars/OneDrive - Mälardalens högskola/kompilatorteori/Lab2/Lab2/Parser/obj/Release/Parser.csproj.CopyComplete
+C:/Users/blandfars/OneDrive - Mälardalens högskola/kompilatorteori/Lab2/Lab2/Parser/obj/Release/Parser.exe
+C:/Users/blandfars/OneDrive - Mälardalens högskola/kompilatorteori/Lab2/Lab2/Parser/obj/Release/Parser.pdb
+C:/Users/blandfars/OneDrive - Mälardalens högskola/kompilatorteori/Lab2/Lab2/Parser/obj/Release/Parser.csprojResolveAssemblyReference.cache
+/Users/j/Downloads/submissions/parser6/Parser/bin/Release/Parser.exe.config
+/Users/j/Downloads/submissions/parser6/Parser/bin/Release/Parser.exe
+/Users/j/Downloads/submissions/parser6/Parser/bin/Release/Parser.pdb
+/Users/j/Downloads/submissions/parser6/Parser/bin/Release/QUT.ShiftReduceParser.dll
+/Users/j/Downloads/submissions/parser6/Parser/obj/Release/Parser.csprojAssemblyReference.cache
+/Users/j/Downloads/submissions/parser6/Parser/obj/Release/Parser.csproj.CoreCompileInputs.cache
+/Users/j/Downloads/submissions/parser6/Parser/obj/Release/Parser.csproj.CopyComplete
+/Users/j/Downloads/submissions/parser6/Parser/obj/Release/Parser.exe
+/Users/j/Downloads/submissions/parser6/Parser/obj/Release/Parser.pdb

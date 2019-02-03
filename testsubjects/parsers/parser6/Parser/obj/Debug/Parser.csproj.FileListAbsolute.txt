@@ -1,0 +1,27 @@
+C:\Users\blandfars\OneDrive - Mälardalens högskola\kompilatorteori\Lab2\Lab2\Parser\bin\Debug\Parser.exe.config
+C:\Users\blandfars\OneDrive - Mälardalens högskola\kompilatorteori\Lab2\Lab2\Parser\bin\Debug\Parser.exe
+C:\Users\blandfars\OneDrive - Mälardalens högskola\kompilatorteori\Lab2\Lab2\Parser\bin\Debug\Parser.pdb
+C:\Users\blandfars\OneDrive - Mälardalens högskola\kompilatorteori\Lab2\Lab2\Parser\bin\Debug\QUT.ShiftReduceParser.dll
+C:\Users\blandfars\OneDrive - Mälardalens högskola\kompilatorteori\Lab2\Lab2\Parser\obj\Debug\Parser.csprojResolveAssemblyReference.cache
+C:\Users\blandfars\OneDrive - Mälardalens högskola\kompilatorteori\Lab2\Lab2\Parser\obj\Debug\Parser.csproj.CoreCompileInputs.cache
+C:\Users\blandfars\OneDrive - Mälardalens högskola\kompilatorteori\Lab2\Lab2\Parser\obj\Debug\Parser.csproj.CopyComplete
+C:\Users\blandfars\OneDrive - Mälardalens högskola\kompilatorteori\Lab2\Lab2\Parser\obj\Debug\Parser.exe
+C:\Users\blandfars\OneDrive - Mälardalens högskola\kompilatorteori\Lab2\Lab2\Parser\obj\Debug\Parser.pdb
+C:\Users\uef16001\OneDrive - Mälardalens högskola\kompilatorteori\Lab2\Lab2\Parser\obj\Debug\Parser.csprojAssemblyReference.cache
+C:\Users\uef16001\OneDrive - Mälardalens högskola\kompilatorteori\Lab2\Lab2\Parser\obj\Debug\Parser.csproj.CoreCompileInputs.cache
+C:\Users\uef16001\OneDrive - Mälardalens högskola\kompilatorteori\Lab2\Lab2\Parser\obj\Debug\Parser.exe
+C:\Users\uef16001\OneDrive - Mälardalens högskola\kompilatorteori\Lab2\Lab2\Parser\obj\Debug\Parser.pdb
+C:\Users\uef16001\OneDrive - Mälardalens högskola\kompilatorteori\Lab2\Lab2\Parser\bin\Debug\Parser.exe.config
+C:\Users\uef16001\OneDrive - Mälardalens högskola\kompilatorteori\Lab2\Lab2\Parser\bin\Debug\Parser.exe
+C:\Users\uef16001\OneDrive - Mälardalens högskola\kompilatorteori\Lab2\Lab2\Parser\bin\Debug\Parser.pdb
+C:\Users\uef16001\OneDrive - Mälardalens högskola\kompilatorteori\Lab2\Lab2\Parser\bin\Debug\QUT.ShiftReduceParser.dll
+C:\Users\uef16001\OneDrive - Mälardalens högskola\kompilatorteori\Lab2\Lab2\Parser\obj\Debug\Parser.csproj.CopyComplete
+H:\Kurser\DVA339 (Kompilator)\lab2copy\Lab2\Parser\bin\Debug\Parser.exe.config
+H:\Kurser\DVA339 (Kompilator)\lab2copy\Lab2\Parser\bin\Debug\Parser.exe
+H:\Kurser\DVA339 (Kompilator)\lab2copy\Lab2\Parser\bin\Debug\Parser.pdb
+H:\Kurser\DVA339 (Kompilator)\lab2copy\Lab2\Parser\bin\Debug\QUT.ShiftReduceParser.dll
+H:\Kurser\DVA339 (Kompilator)\lab2copy\Lab2\Parser\obj\Debug\Parser.csprojAssemblyReference.cache
+H:\Kurser\DVA339 (Kompilator)\lab2copy\Lab2\Parser\obj\Debug\Parser.csproj.CoreCompileInputs.cache
+H:\Kurser\DVA339 (Kompilator)\lab2copy\Lab2\Parser\obj\Debug\Parser.csproj.CopyComplete
+H:\Kurser\DVA339 (Kompilator)\lab2copy\Lab2\Parser\obj\Debug\Parser.exe
+H:\Kurser\DVA339 (Kompilator)\lab2copy\Lab2\Parser\obj\Debug\Parser.pdb

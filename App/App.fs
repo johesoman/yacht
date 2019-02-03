@@ -19,7 +19,7 @@ type TestInfo =
 
 let testRunner generate action check n =
   let rec go i =
-    if n <= i then ()
+    if n <= i then printfn ""
     else
       let x = generate (i + 1)
 
@@ -27,7 +27,11 @@ let testRunner generate action check n =
       | None -> ()
       | Some result ->
           if check result x
-            then go (i + 1)
+            then
+              if i % 50 = 0 then printfn ""
+              printf "."
+
+              go (i + 1)
             else ()
 
   go 0

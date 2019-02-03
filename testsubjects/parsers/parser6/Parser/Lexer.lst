@@ -1,0 +1,105 @@
+
+// ==========================================================================
+//  GPLEX error listing for lex source file <Lexer.l>
+// ==========================================================================
+//  Version:  1.2.2
+//  Machine:  DESKTOP-DRM4KL1
+//  DateTime: 2018-12-03 22:19:16
+//  UserName: blandfars
+// ==========================================================================
+
+
+%option out:Generated/Lexer.cs
+%namespace Parser
+%using QUT.Gppg;
+
+alpha   [a-zA-Z_]
+digit   [0-9]
+
+PLUS	[\+]
+MINUS	[\-]
+MULT	[\*]
+DIV		[\/]
+OR		[\|\|]
+AND		[&&]
+EQ		[==]
+NOTEQ	[!=]
+LT		[<]
+GT		[>]
+LTEQ	(<=)
+GTEQ	(>=)
+//NOT		[!]
+
+
+alphanum    {alpha}|{digit}
+//uOperators		{NOT}
+firstOps		{LTEQ}|{GTEQ}
+bOperators		{OR}|{AND}|{EQ}|{NOTEQ}|{LT}|{GT}|{PLUS}|{MINUS}|{MULT}|{DIV}
+
+
+%%
+
+" "|\r|\n|\r\n	{ }
+//.*$			{ }
+
+{firstOps}				{ yylval.value = yytext;
+                          return (int) Tokens.BOP; 
+                        }
+
+{bOperators}			{ yylval.value = yytext;
+//^^^^^^^^^^
+// Warning: This pattern always overrides ""!"" 
+// Warning: This pattern always overrides ""="" 
+// ---------------------------------------------
+                          return (int) Tokens.BOP; 
+                        }
+
+"void"			{ return (int) Tokens.VOID; }
+"("				{ return (int) Tokens.LPAR; }
+")"				{ return (int) Tokens.RPAR; }
+"{"				{ return (int) Tokens.LCUR; }
+"}"				{ return (int) Tokens.RCUR; }
+","				{ return (int) Tokens.COM; }
+"int"			{ return (int) Tokens.INT; }
+"bool"			{ return (int) Tokens.BOOL; }
+"if"			{ return (int) Tokens.IF; }
+"else"			{ return (int) Tokens.ELSE; }
+"while"			{ return (int) Tokens.WHILE; }
+";"				{ return (int) Tokens.SEMI; }
+"true"			{ return (int) Tokens.TRUE; }
+"false"			{ return (int) Tokens.FALSE; }
+"return"		{ return (int) Tokens.RETURN; }
+"="				{ return (int) Tokens.ASN; }
+// Warning: This pattern always overridden by "{bOperators}" 
+// ----------------------------------------------------------
+"!"				{ return (int) Tokens.UOP; }
+// Warning: This pattern always overridden by "{bOperators}" 
+// ----------------------------------------------------------
+
+
+{alpha}{alphanum}*      { yylval.value = yytext;
+                          return (int) Tokens.ID; 
+                        }
+                        
+{digit}+                { yylval.value = yytext;
+                          return (int) Tokens.NUM; 
+                        }
+
+
+                        
+.                       { yylval.value = yytext;
+                          return (int) Tokens.ERR;
+                        }
+                        
+    {
+      yylloc = new LexLocation(tokLin, tokCol, tokELin, tokECol);
+    }
+	
+
+%% 
+
+override public void yyerror(string msg, object[] arg) {
+  Console.WriteLine("{0} on line {1} column {2}", msg, yylloc.StartLine, yylloc.StartColumn);
+}
+// ==========================================================================
+
