@@ -15,6 +15,18 @@
           "lib/netstandard2.0/Argu.dll": {}
         }
       },
+      "CommandLineParser.FSharp/2.4.3": {
+        "type": "package",
+        "dependencies": {
+          "FSharp.Core": "4.5.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/CommandLine.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/CommandLine.dll": {}
+        }
+      },
       "Expecto/8.8.0": {
         "type": "package",
         "dependencies": {
@@ -886,6 +898,19 @@
         "lib/netstandard2.0/Argu.dll",
         "lib/netstandard2.0/Argu.pdb",
         "lib/netstandard2.0/Argu.xml"
+      ]
+    },
+    "CommandLineParser.FSharp/2.4.3": {
+      "sha512": "yN8iqUeTvVNIzHLcDAbZJ2Uw00lWH9695Ky5SNAkq176r2S0dwxJQ3lx71sRTIN0/ye0p1+YEz5+e8Qnr8cU3Q==",
+      "type": "package",
+      "path": "commandlineparser.fsharp/2.4.3",
+      "files": [
+        ".signature.p7s",
+        "README.md",
+        "commandlineparser.fsharp.2.4.3.nupkg.sha512",
+        "commandlineparser.fsharp.nuspec",
+        "lib/netstandard2.0/CommandLine.dll",
+        "lib/netstandard2.0/CommandLine.xml"
       ]
     },
     "Expecto/8.8.0": {
@@ -3198,6 +3223,7 @@
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
       "Argu >= 5.2.0",
+      "CommandLineParser.FSharp >= 2.4.3",
       "Expecto >= 8.8.0",
       "FSharp.Core >= 4.6.1",
       "FsCheck >= 2.13.0",
@@ -3306,6 +3332,10 @@
           "Argu": {
             "target": "Package",
             "version": "[5.2.0, )"
+          },
+          "CommandLineParser.FSharp": {
+            "target": "Package",
+            "version": "[2.4.3, )"
           },
           "Expecto": {
             "target": "Package",

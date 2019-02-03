@@ -10,15 +10,52 @@ open System.Collections.Generic
 
 
 
-type CommandError =
-  { command   : string
-  ; arguments : string []
-  ; message   : string
+type Cmd =
+  { cmd  : string
+  ; args : string []
   }
 
 
 
-let runProcess cmd args write =
+type CmdOk =
+  { cmd      : Cmd
+  ; output   : string
+  ; exitCode : int
+  }
+
+
+
+type CmdErr =
+  { cmd  : Cmd
+  ; msg  : string
+  }
+
+
+
+module CmdErr =
+  let prettyPrint ({cmd = cmd; msg = msg} : CmdErr) =
+    let old = System.Console.ForegroundColor
+
+    try
+      Console.ForegroundColor <- ConsoleColor.Red
+
+      let s =
+        Array.append [|cmd.cmd|] cmd.args
+        |> String.concat " "
+
+      let lines =
+        sprintf "command '%s' failed with\n'%s'" s msg
+        |> String.splitOn '\n'
+
+      printfn "%s" ("ERROR: " + lines.[0])
+      Array.iter (fun s -> printfn "%s" ("       " + s)) lines.[1 ..]
+
+    finally
+      Console.ForegroundColor <- old
+
+
+
+let runProcessWithInput (cmd : Cmd) write =
   let go () =
     // setup process
     use p =
@@ -29,8 +66,8 @@ let runProcess cmd args write =
           RedirectStandardError  = true,
           // UseShellExecute has to be false when we use Redirect*
           UseShellExecute        = false,
-          FileName               = cmd,
-          Arguments              = String.concat " " args
+          FileName               = cmd.cmd,
+          Arguments              = String.concat " " cmd.args
         )
       new Process(StartInfo = info)
 
@@ -59,7 +96,7 @@ let runProcess cmd args write =
       p.WaitForExit()
 
       match String.concatNonNull "" errors with
-      | "" -> Result.Ok (String.concatNonNull "" outputs)
+      | "" -> Result.Ok (p.ExitCode, String.concatNonNull "" outputs)
       | s  -> Result.Error s
 
     // exception handling
@@ -77,4 +114,14 @@ let runProcess cmd args write =
     | ex -> Error ex.Message
 
   go ()
-  |> Result.mapError (fun s -> {command = cmd; arguments = args; message = s})
+  |> function
+     | Error s -> Error {CmdErr.cmd = cmd; CmdErr.msg = s}
+
+     | Ok (x, s) -> Ok { CmdOk.cmd      = cmd
+                       ; CmdOk.exitCode = x
+                       ; CmdOk.output   = s
+                       }
+
+
+
+let runProcess cmd = runProcessWithInput cmd (fun _ -> ())

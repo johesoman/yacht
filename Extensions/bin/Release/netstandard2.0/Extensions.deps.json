@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETStandard,Version=v2.0/",
-    "signature": "65ddd8aa167bf77aae5284f98391a008d2d7a004"
+    "signature": "68c052676498e4dff0a426f53cd078cb76a8fad0"
   },
   "compilationOptions": {},
   "targets": {
@@ -10,6 +10,7 @@
       "Extensions/1.0.0": {
         "dependencies": {
           "Argu": "5.2.0",
+          "CommandLineParser.FSharp": "2.4.3",
           "Expecto": "8.8.0",
           "FSharp.Core": "4.6.1",
           "FsCheck": "2.13.0",
@@ -85,6 +86,17 @@
           "lib/netstandard2.0/Argu.dll": {
             "assemblyVersion": "1.0.0.0",
             "fileVersion": "5.2.0.0"
+          }
+        }
+      },
+      "CommandLineParser.FSharp/2.4.3": {
+        "dependencies": {
+          "FSharp.Core": "4.6.1"
+        },
+        "runtime": {
+          "lib/netstandard2.0/CommandLine.dll": {
+            "assemblyVersion": "2.4.3.0",
+            "fileVersion": "2.4.3.0"
           }
         }
       },
@@ -635,6 +647,13 @@
       "sha512": "sha512-WyAXjJHh091VYYmzK+AOsGnzj1fg95v/yoSjyehxYirk7qH4pDfgy2oukYQQJB8bOoc8sdUQhLWuSYIl4zkvYg==",
       "path": "argu/5.2.0",
       "hashPath": "argu.5.2.0.nupkg.sha512"
+    },
+    "CommandLineParser.FSharp/2.4.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-yN8iqUeTvVNIzHLcDAbZJ2Uw00lWH9695Ky5SNAkq176r2S0dwxJQ3lx71sRTIN0/ye0p1+YEz5+e8Qnr8cU3Q==",
+      "path": "commandlineparser.fsharp/2.4.3",
+      "hashPath": "commandlineparser.fsharp.2.4.3.nupkg.sha512"
     },
     "Expecto/8.8.0": {
       "type": "package",

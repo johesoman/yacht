@@ -29,7 +29,8 @@ Extensions/[Oo]bj/*
 # Root
 .paket/paket.exe
 paket-files/
-.paket/paket.exe
+packages/
+packages
 
 # general
 .DS_Store

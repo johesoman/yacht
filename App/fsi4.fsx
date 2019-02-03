@@ -1,5 +1,6 @@
 // packages
 #r @"../packages/Argu/lib/netstandard2.0/Argu.dll"
+#r @"../packages/CommandLineParser.FSharp/lib/netstandard2.0/CommandLine.dll"
 // #r @"../packages/FsCheck/lib/netstandard2.0/FsCheck.dll"
 // #r @"../packages/Expecto/lib/netstandard2.0/Expecto.dll"
 // external
@@ -16,6 +17,5 @@
 #load "RunProcess.fs"
 
 // application
-#load "Error.fs"
 #load "App.fs"
 #load "Program.fs"
