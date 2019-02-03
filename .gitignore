@@ -6,6 +6,10 @@ Interpreter/[Oo]bj/*
 Parser/[Bb]in/*
 Parser/[Oo]bj/*
 
+# Extensions
+Extensions/[Bb]in/*
+Extensions/[Oo]bj/*
+
 # PPrint
 PPrint/[Bb]in/*
 PPrint/[Oo]bj/*
@@ -21,10 +25,6 @@ ParserTester/[Oo]bj/*
 # App
 App/[Bb]in/*
 App/[Oo]bj/*
-
-# Extensions
-Extensions/[Bb]in/*
-Extensions/[Oo]bj/*
 
 # Root
 .paket/paket.exe
