@@ -1,6 +1,6 @@
-mono testsubjects/parsers/parser1/Lab2/bin/Release/Lab2.exe
-mono testsubjects/parsers/parser2/Lab2/bin/Release/Lab2.exe
-mono testsubjects/parsers/parser2/bin/Release/Labb2.1.exe
-mono testsubjects/parsers/parser4/Parser/bin/Release/Parser.exe
-mono testsubjects/parsers/parser5/LAB2/bin/Release/LAB2.exe
-mono testsubjects/parsers/parser6/Parser/bin/Release/Parser.exe
+-t parser -c mono testsubjects/parsers/parser1/Lab2/bin/Release/Lab2.exe
+-t parser -c mono testsubjects/parsers/parser2/Lab2/bin/Release/Lab2.exe
+-t parser -c mono testsubjects/parsers/parser2/bin/Release/Labb2.1.exe
+-t parser -c mono testsubjects/parsers/parser4/Parser/bin/Release/Parser.exe
+-t parser -c mono testsubjects/parsers/parser5/LAB2/bin/Release/LAB2.exe
+-t parser -c mono testsubjects/parsers/parser6/Parser/bin/Release/Parser.exe

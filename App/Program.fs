@@ -29,6 +29,12 @@ open CommandLine
 
 
 
+// CommandLineParser.FSharp requires proper enums.
+type TestType =
+  | parser = 0
+
+
+
 type Options =
   {
     [<Option('n', "num", Default = 100
@@ -48,6 +54,11 @@ type Options =
                 "\"path with spaces/app.exe\"."
     )>]
     cmd : seq<string>
+  ;
+    [<Option('t', "type"
+            , Required = true
+            , HelpText = "The kind of test.")>]
+    testType : TestType
   }
 
 
@@ -58,8 +69,9 @@ let runApp argv =
   | :? Parsed<Options> as parsed ->
       let ss   = Array.ofSeq parsed.Value.cmd
       let cmd  = ss.[0]
-      let args = ss.[1 ..]
+      let args = Array.append ss.[1 ..] [|"-t"|]
       let num  = parsed.Value.num
+      let tt   = parsed.Value.testType
 
       TestInfo.parserTestAll num
       |> App.runTest {Cmd.cmd = cmd; Cmd.args = args}
@@ -70,15 +82,13 @@ let runApp argv =
 
 
 let runTests path =
-  let split (s : string) =
-    let s2 = s.Split " "
-    [|s2.[0]; String.concat " " s2.[1 ..]|]
+  let go (s : string) =
+    let ss = s.Split ' '
+    runApp ss
 
-  let cmds =
-    System.IO.File.ReadAllLines path
-    |> Array.map (split >> Array.append [|"-c"|])
+  let cmds = System.IO.File.ReadAllLines path
 
-  runApp cmds.[0]
+  go cmds.[0]
 
 
 
